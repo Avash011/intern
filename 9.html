@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML page with DOM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        img {
+            display: show;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my HTML page</h1>
+    <p>This is a simple HTML document with a DOM structure.</p>
+    <div id="container"></div>
+    <img id="myImage" src="https://via.placeholder.com/150" alt="Placeholder Image">
+<script>
+        console.time("render");
+        const container = document.getElementById('container');
+        for (let i = 0  ; i < 100; i++) {
+            const div=document.createElement('div');
+            div.className="box";
+            div.textContent= i + 1;
+            container.appendChild(div);
+
+        }
+        requestAnimationFrame(() => {
+            console.timeEnd("render");
+        });
+    </script>  
+
+</body>
+
+</html>
