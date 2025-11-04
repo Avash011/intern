@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      console.log("start");
+      Promise.resolve()
+        .then(() =>{
+          console.log("promise 1");
+          return Promise.resolve("inner value");
+        })
+        .then(val => {
+          console.log("promise 2", val);
+
+        })
+
+        setTimeout(() => console.log("timeout 1"), 0);
+        setTimeout(() => console.log("timeout 2"), 100);
+
+      console.log("end");
+    </script>
+  </head>
+</html>

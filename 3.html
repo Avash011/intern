@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Demo</title>
+</head>
+<body>
+  <button id="block">Block: 1–5</button>
+  <button id="non">Non-block: 1–5</button>
+  <pre id="out"></pre>
+  <button id="clear">Clear Output</button>
+
+  <script>
+    const out = document.getElementById('out');
+    const append = (msg) => {
+      out.textContent += msg + '\n';
+    };
+    document.getElementById('block').onclick = () => {
+      for (let i = 1; i <= 5; i++) {
+        const start = Date.now();
+        while (Date.now() - start < 500) {} 
+        append('block ' + i);
+      }
+    };
+
+    document.getElementById('non').onclick = () => {
+      for (let i = 1; i <= 5; i++) {
+        setTimeout(((n) => () => append('block ' + n))(i), i * 500);
+      }
+    };
+    document.getElementById('clear').onclick = () => {
+      out.textContent = '';
+    };
+  </script>
+</body>
+</html>
+<!-- here blocking and non blocking approaches are demonstrated using buttons. The "Block: 1–5" button uses a busy-wait loop to block the main thread for approximately 500 milliseconds for each iteration, resulting in a total blocking time of about 2.5 seconds before all messages are displayed, while the "Non-block: 1–5" button uses `setTimeout` to schedule the messages to be appended every 500 milliseconds without blocking the main thread, allowing the UI to remain responsive while the messages are displayed one by one. -->

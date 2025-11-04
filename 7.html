@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <script>
+            async function fetchPost(){
+                console.log("Fetching post...");
+                const url = ('https://jsonplaceholder.typicode.com/posts/1');
+                console.log("about to fetch");
+                const responsePromise = fetch (url);
+                console.log("fetch initiated, awaiting response");
+                const response = await responsePromise;
+                console.log("response received, praising JSON");
+                const data = await response.json();
+                console.log("done", data);
+
+            }
+            fetchPost().catch(err =>
+                console.error("fetch error", err)
+            );
+            console.time("fetchPost");
+            
+            console.timeEnd("fetchPost");
+
+        </script>
+    </body>
+</html>
