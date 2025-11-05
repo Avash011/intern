@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Defer Async Example</title>
+    <script defer src="defer-script.js"></script>
+    <script async src="async-script.js"></script>
+
+</head>
+<body>
+  <h2>Defer vs Async Example</h2>
+  <script>
+    console.time("ScriptLoad");
+    window.addEventListener("load", () => {
+      console.timeEnd("ScriptLoad");
+      console.log("Script ran after page load");
+    });
+  </script>
+</body>
+</html>

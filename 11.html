@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>requestAnimationFrame Demo</title>
+</head>
+<body>
+  <h2>Div Animation</h2>
+  <div id="box" style="width:50px;height:50px;background:rgb(61, 57, 57);position:absolute;top:80px;left:0;"></div>
+  <script>
+    let pos = 0;
+    function animate() {
+      pos += 7;
+      document.getElementById("box").style.left = pos + "px";
+      if (pos < 500) requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>
+
+    <!-- requestAnimationFrame is smoother than setInterval because it syncs with the browser's repaint cycle and optimizes performance by pausing in inactive tabs and reducing unnecessary calculations. -->
